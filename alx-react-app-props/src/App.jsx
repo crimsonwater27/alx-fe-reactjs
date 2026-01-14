@@ -7,7 +7,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ProfilePage from '.ProfilePage';
+import ProfilePage from './ProfilePage.jsx';
 import UserContext from './UserContext.js';
 function App() {
   const [count, setCount] = useState(0)
