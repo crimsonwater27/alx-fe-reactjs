@@ -1,9 +1,8 @@
-import { useContext } from 'react';
-import UserContext from './UserContext.js';
-import UserProfile from '../../alx-react-app-new/src/components/UserProfile.jsx';
+import { useContext } from "react";
+import UserContext from "./UserContext";
 
-function UserDetails() {
-  const userData = useContext(UserContext); // Access the user data from context
+function UserProfile() {
+  const userData = useContext(UserContext);
 
   return (
     <div>
