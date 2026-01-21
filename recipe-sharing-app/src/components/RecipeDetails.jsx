@@ -17,7 +17,7 @@ const RecipeDetails = () => {
 
   if (!recipe) return <p>Recipe not found.</p>;
 
-  const isFavorite = favorites.includes(recipeId);
+  const isFavorite = favorites.includes(recipe.id);
 
   return (
     <div>
