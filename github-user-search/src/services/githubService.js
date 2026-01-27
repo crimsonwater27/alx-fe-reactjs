@@ -9,21 +9,11 @@ const githubApi = axios.create({
   },
 });
 
-export const fetchUserData = async (
-  username,
-  location,
-  minRepos,
-  page = 1
-) => {
+export const fetchUserData = async (username, location, minRepos, page = 1) => {
   let query = username;
 
-  if (location) {
-    query += `+location:${location}`;
-  }
-
-  if (minRepos) {
-    query += `+repos:>=${minRepos}`;
-  }
+  if (location) query += `+location:${location}`;
+  if (minRepos) query += `+repos:>=${minRepos}`;
 
   const response = await githubApi.get(
     `/search/users?q=${query}&page=${page}&per_page=10`
@@ -31,4 +21,3 @@ export const fetchUserData = async (
 
   return response.data;
 };
-
