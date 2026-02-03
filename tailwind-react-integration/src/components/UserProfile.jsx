@@ -27,7 +27,8 @@ function UserProfile() {
        />
       <h1 className="
       sm:text-lg md:text-xl 
-      text-blue-800 
+      text-blue-800
+      hover:text-blue-500 
       my-4 
       text-center
       transition-colors
