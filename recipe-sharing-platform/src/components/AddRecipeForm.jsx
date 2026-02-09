@@ -6,10 +6,8 @@ export default function AddRecipeForm() {
   const [instructions, setInstructions] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Simple validation
+  // ✅ Add a validate function
+  const validate = () => {
     const newErrors = {};
     if (!title.trim()) newErrors.title = "Title is required.";
     if (!ingredients.trim() || ingredients.split("\n").length < 2)
@@ -17,17 +15,22 @@ export default function AddRecipeForm() {
     if (!instructions.trim() || instructions.split("\n").length < 2)
       newErrors.instructions = "At least two steps required.";
 
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = validate(); // call validate
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      // Form is valid — you can post or update state
+      // Form is valid
       console.log("New Recipe Submitted:", {
         title,
         ingredients: ingredients.split("\n"),
         instructions: instructions.split("\n"),
       });
 
-      // Clear form
       setTitle("");
       setIngredients("");
       setInstructions("");
@@ -94,7 +97,6 @@ export default function AddRecipeForm() {
           )}
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition-colors"
