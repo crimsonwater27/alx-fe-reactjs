@@ -3,9 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-import ProfileDetails from "./components/ProfileDetails";
-import ProfileSettings from "./components/ProfileSettings";
-import Post from "./components/Post";
+import BlogPost from "./components/BlogPost";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -16,22 +14,18 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
-        {/* protected route */}
+        {/* protected profile */}
         <Route
-          path="/profile"
+          path="/profile/*"
           element={
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }
-        >
-          {/* nested routes */}
-          <Route path="details" element={<ProfileDetails />} />
-          <Route path="settings" element={<ProfileSettings />} />
-        </Route>
+        />
 
-        {/* dynamic route */}
-        <Route path="/post/:id" element={<Post />} />
+        {/* dynamic blog route */}
+        <Route path="/blog/:id" element={<BlogPost />} />
 
       </Routes>
     </BrowserRouter>
